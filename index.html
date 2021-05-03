@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tiddly Wiki via Google Drive</title>
+    <meta charset="utf-8" />
+    <style>
+      body { margin: 0; padding: 0 }
+      #root { width: 100%; height: 100vh; display: flex; flex-flow: column; }
+      #top { flex: 0 1 auto; background-color: #ddddf0; padding: 10px; }
+      #iframe-wrapper { flex: 1 1 auto; display: flex; }
+      #iframe-wrapper > iframe { flex: 1 1 auto; }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div id="top">
+        <!--Add buttons to initiate auth sequence and sign out-->
+        <button id="authorize_button" style="display: none;">Authorize</button>
+        <button id="signout_button" style="display: none;">Sign Out</button>
+        <span id="info-msg"></span>
+      </div>
+      <div id="iframe-wrapper"></div>
+    </div>
+
+    <script type="text/javascript">
+      // Client ID and API key from the Developer Console
+      var CLIENT_ID = '162785822872-5t1h3odq82nd3mh89311t60tag9ao7ij.apps.googleusercontent.com';
+      var API_KEY = 'AIzaSyBjXM8WShcpl0jxfbQa9b_Pnt6sbDnKsKo';
+
+      // Array of API discovery doc URLs for APIs used by the quickstart
+      var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
+
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      var SCOPES = 'https://www.googleapis.com/auth/drive';
+
+      var authorizeButton = document.getElementById('authorize_button');
+      var signoutButton = document.getElementById('signout_button');
+      var infoMsg = document.getElementById("info-msg");
+
+      function showMsg(msg) {
+        infoMsg.innerText = msg;
+      }
+
+      /**
+       *  On load, called to load the auth2 library and API client library.
+       */
+      function handleClientLoad() {
+        gapi.load('client:auth2', initClient);
+      }
+
+      /**
+       *  Initializes the API client library and sets up sign-in state
+       *  listeners.
+       */
+      function initClient() {
+        gapi.client.init({
+          apiKey: API_KEY,
+          clientId: CLIENT_ID,
+          discoveryDocs: DISCOVERY_DOCS,
+          scope: SCOPES
+        }).then(function () {
+          // Listen for sign-in state changes.
+          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+          // Handle the initial sign-in state.
+          updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+          authorizeButton.onclick = handleAuthClick;
+          signoutButton.onclick = handleSignoutClick;
+        }, function(error) {
+          console.error(error);
+        });
+      }
+
+      /**
+       *  Called when the signed in status changes, to update the UI
+       *  appropriately. After a sign-in, the API is called.
+       */
+      function updateSigninStatus(isSignedIn) {
+        if (isSignedIn) {
+          authorizeButton.style.display = 'none';
+          signoutButton.style.display = 'inline';
+          onSignedIn();
+        } else {
+          authorizeButton.style.display = 'inline';
+          signoutButton.style.display = 'none';
+        }
+      }
+
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClick(event) {
+        gapi.auth2.getAuthInstance().signIn();
+      }
+
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClick(event) {
+        gapi.auth2.getAuthInstance().signOut();
+      }
+
+      var wikiDir = null;
+      var currentWiki = null;
+
+      function onSignedIn() {
+        showMsg("Attempting to load wiki...");
+        gapi.client.drive.files.list({
+          fields: "files(id, name)",
+          q: "name = 'asap.wiki' and 'root' in parents and mimeType = 'application/vnd.google-apps.folder'"
+        }).then(function(response) {
+          var files = response.result.files;
+          if (files && files.length == 1) {
+            wikiDir = files[0];
+            console.log({ wikiDir: wikiDir });
+            fetchWikis(wikiDir);
+          } else {
+            showMsg("You must create a directory named asap.wiki in the root of your Google Drive.");
+          }
+        }, function(response) {
+          console.error(response);
+          showMsg("Missing Google Drive permission? Try re-authorizing.");
+        });
+      }
+
+      function fetchWikis(dir) {
+        gapi.client.drive.files.list({
+          fields: "files(id, name)",
+          q: "'" + dir.id + "' in parents and trashed = false and mimeType != 'application/vnd.google-apps.folder'"
+        }).then(function(response) {
+          console.log(response);
+          var files = response.result.files;
+          if (files) {
+            if (files.length == 1) {
+              loadWiki(files[0]);
+            } else if (files.length == 0) {
+              showMsg("No wiki found.");
+            } else if (files.length > 1) {
+              // Here we could allow the user to choose which one they want
+              showMsg("Multiple wikis are not yet supported.");
+            }
+          } else {
+            showMsg("No wiki found.");
+          }
+        });
+      }
+
+      function loadWiki(file) {
+        currentWiki = file;
+        gapi.client.drive.files.get({
+          fileId: currentWiki.id,
+          alt: "media"
+        }).then(function(response) {
+          console.log(response);
+          var wrapper = document.getElementById("iframe-wrapper");
+          if (!wrapper.firstChild) {
+            var iframe = document.createElement("iframe");
+            wrapper.appendChild(iframe);
+          }
+          wrapper.firstChild.srcdoc = response.body;
+          showMsg("Loaded " + currentWiki.name + " at " + new Date().toLocaleString());
+        });
+      }
+
+      window.$tw = {
+        customSaver: {
+          save: function(text, method, callback) {
+            if (method != "save") {
+              return false;
+            }
+            showMsg("Saving, please wait...");
+            var handleErr = function(response) {
+              var msg = "Failed to save to Google Drive.";
+              console.error(response);
+              showMsg(msg);
+              callback(msg);
+            }
+            // The documentation for this is incorrect! It says to use PUT but we need to use PATCH.
+            gapi.client.request({
+              path: "/upload/drive/v3/files/" + currentWiki.id,
+              method: "PATCH",
+              params: { uploadType: "media" },
+              body: text
+            }).then(function(response) {
+              if (response.status == 200) {
+                callback(null);
+                showMsg("Saved " + currentWiki.name + " at " + new Date().toLocaleString());
+              } else {
+                handleErr(response);
+              }
+            }, function(response) {
+              handleErr(response);
+            });
+            return true;
+          }
+        }
+      };
+    </script>
+
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+  </body>
+</html>
