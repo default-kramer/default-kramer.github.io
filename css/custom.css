@@ -1,0 +1,89 @@
+/* custom.css */
+
+code {
+    color: black;
+}
+
+/* When highlighted code blocks are too wide, they wrap. Resulting in the */
+/* line numbers column's rows not lining up with the code rows. Prevent */
+/* wrapping. */
+pre {
+    white-space: pre;
+    width: inherit;
+}
+
+article img {
+  /* Make sure that images within blog articles never take more width
+     than the article width; `height: auto` ensures the height is also
+     resized proportionally.
+
+     This is useful given that Markdown itself gives you little
+     control over image resizing, and in particular no way to achieve
+     this "best fit" behavior.
+ */
+  max-width: 100%;
+  height: auto;
+}
+
+/* Frog generated the above; below is all me */
+/* Hide Scribble-generated 🔗 icons */
+a.heading-anchor { visibility: collapse; }
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif;
+	font-size: 20px;
+	line-height: 1.25;
+	background: #fffff4;
+}
+
+a, a:visited {
+	color: #084488;
+}
+
+.container {
+	max-width: 720px;
+	padding: 0 10px;
+	margin: 0 auto;
+}
+
+.top-nav {
+	background: #3388c5;
+}
+
+.top-nav span {
+	color: white;
+	display: inline-block;
+	margin-right: 1rem;
+	font-size: 1.5rem;
+	padding: 1.5rem 0;
+}
+
+.top-nav a {
+	color: white;
+	text-decoration: none;
+}
+
+
+/* scribble stuff */
+.SCodeFlow {
+  white-space: nowrap;
+  font-family: monospace;
+  background-color: #f5f5f5;
+  border: 1px solid rgba(0,0,0,0.15);
+  padding: 0.5rem;
+}
+
+.SCodeFlow p {
+	padding: 0;
+	margin: 0;
+}
+
+.SCodeFlow .RktVal {
+	color: #228b22
+}
+
+.SIntrapara {
+	margin: 1rem 0;
+}

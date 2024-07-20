@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+ <title type="text">DQB Forever: Posts tagged 'blogging'</title>
+ <link rel="self" href="https://www.dqb-forever.com/feeds\blogging.atom.xml" />
+ <link href="https://www.dqb-forever.com/tags\blogging.html" />
+ <id>urn:https-www-dqb-forever-com:-tags-blogging-html</id>
+ <updated>2024-07-13T05:00:00Z</updated>
+ <entry>
+  <title type="text">A Scribble Post</title>
+  <link rel="alternate" href="https://www.dqb-forever.com/blog\2024\07\a-scribble-post.html?utm_source=blogging&amp;utm_medium=Atom" />
+  <id>urn:https-www-dqb-forever-com:-blog-2024-07-a-scribble-post-html</id>
+  <published>2024-07-13T05:00:00Z</published>
+  <updated>2024-07-13T05:00:00Z</updated>
+  <author>
+   <name>Ryan Kramer</name></author>
+  <content type="html">
+&lt;p&gt;Scribble still feels like it&amp;rsquo;s from 20 years in the future.&lt;/p&gt;
+
+&lt;div class="SCodeFlow"&gt;
+ &lt;table cellpadding="0" cellspacing="0" class="RktBlk"&gt;
+  &lt;tbody&gt;
+   &lt;tr&gt;
+    &lt;td&gt;&lt;span class="RktPn"&gt;(&lt;/span&gt;&lt;span class="RktSym"&gt;&lt;a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/void.html#%28def._%28%28quote._~23~25kernel%29._void%29%29"&gt;void&lt;/a&gt;&lt;/span&gt;&lt;span class="hspace"&gt;&amp;nbsp;&lt;/span&gt;&lt;span class="RktSym"&gt;&lt;a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=doc-coverage&amp;amp;rel=index.html%23%2528def._%2528%2528lib._doc-coverage%252Fmain..rkt%2529._check-all-documented%2529%2529"&gt;check-all-documented&lt;/a&gt;&lt;/span&gt;&lt;span class="hspace"&gt;&amp;nbsp;&lt;/span&gt;&lt;span class="RktVal"&gt;56&lt;/span&gt;&lt;span class="RktPn"&gt;)&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+   &lt;tr&gt;
+    &lt;td&gt;&lt;span class="RktPn"&gt;(&lt;/span&gt;&lt;span class="RktSym"&gt;&lt;a class="RktStxLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/let.html#%28form._%28%28lib._racket%2Fprivate%2Fletstx-scheme..rkt%29._let%29%29"&gt;let&lt;/a&gt;&lt;/span&gt;&lt;span class="hspace"&gt;&amp;nbsp;&lt;/span&gt;&lt;span class="RktPn"&gt;(&lt;/span&gt;&lt;span class="RktPn"&gt;[&lt;/span&gt;&lt;span class="RktSym"&gt;x&lt;/span&gt;&lt;span class="hspace"&gt;&amp;nbsp;&lt;/span&gt;&lt;span class="RktPn"&gt;(&lt;/span&gt;&lt;span class="RktSym"&gt;&lt;a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._block%2529%2529"&gt;block&lt;/a&gt;&lt;/span&gt;&lt;span class="hspace"&gt;&amp;nbsp;&lt;/span&gt;&lt;span class="RktVal"&gt;99&lt;/span&gt;&lt;span class="RktPn"&gt;)&lt;/span&gt;&lt;span class="RktPn"&gt;]&lt;/span&gt;&lt;span class="RktPn"&gt;)&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+   &lt;tr&gt;
+    &lt;td&gt;&lt;span class="hspace"&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span class="RktPn"&gt;(&lt;/span&gt;&lt;span class="RktSym"&gt;&lt;a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._put-hill%2521%2529%2529"&gt;put-hill!&lt;/a&gt;&lt;/span&gt;&lt;span class="hspace"&gt;&amp;nbsp;&lt;/span&gt;&lt;span class="RktSym"&gt;a&lt;/span&gt;&lt;span class="hspace"&gt;&amp;nbsp;&lt;/span&gt;&lt;span class="RktSym"&gt;b&lt;/span&gt;&lt;span class="hspace"&gt;&amp;nbsp;&lt;/span&gt;&lt;span class="RktSym"&gt;x&lt;/span&gt;&lt;span class="RktPn"&gt;)&lt;/span&gt;&lt;span class="RktPn"&gt;)&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content></entry></feed>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>@(string-replace title "🔗 " "")</title> @;{ Undo Scribble-generated link icon }
+    <meta name="description" content="@|description|">
+    <meta name="author"      content="@|author|">
+    <meta name="keywords"    content="@|keywords|">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <link rel="icon"      href="@|uri-prefix|/favicon.ico">
+    <link rel="canonical" href="@full-uri|">
+    @(when rel-next @list{<link rel="next" href="@|rel-next|">})
+    @(when rel-prev @list{<link rel="prev" href="@|rel-prev|">})
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/pygments.css">
+    <!--<link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/scribble.css"> selectively moved to custom.css -->
+    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/custom.css">
+    @;{<!-- Feeds -->
+    <link rel="alternate" type="application/atom+xml"
+          href="@|atom-feed-uri|" title="Atom Feed">
+    <link rel="alternate" type="application/rss+xml"
+          href="@|rss-feed-uri|" title="RSS Feed">}
+  </head>
+  <body>
+    <div class="top-nav">
+      <div class="container">
+      <span><a href="@|uri-prefix|/index.html">DQB Forever</a></span>
+      <span>/</span>
+      <span><a href="@|uri-prefix|/hermits-heresy/index.html">Hermit's Heresy</a></span>
+      </div>
+    </div>
+    <div class="container">
+      <div id="content">
+        @;{ Index pages for posts have @tag that's not #f }
+        @(when tag
+          @list{<h1>Posts tagged <em>@|tag|</em></h1>})
+        @;{ The main page contents are in @contents }
+        @|contents|
+      </div>
+      <footer>
+        <hr />
+        <p>Site generated
+        by <a href="https://github.com/greghendershott/frog">Frog</a>,
+        the <strong>fr</strong>ozen bl<strong>og</strong> tool.</p>
+      </footer>
+    </div>
+  </body>
+</html>
