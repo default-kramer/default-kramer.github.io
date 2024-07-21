@@ -57,7 +57,7 @@ Now your paint.net should look something like this:
 @(img "basic-hill-1/flattened-bmp.png")
 
 Finally, we need to color the hill to communicate the elevation.
-You can read the documentation of @(racket put-hill!) for more details, but basically
+You can read the documentation of @(racket bitmap->hill) for more details, but basically
 darker pixels correspond to taller elevation.
 I paint the larger area with rgb(80,80,80) meaning it will be 40 blocks short of max height.
 I paint the smaller area with rgb(20,20,20) meaning it will be 10 blocks short of max height.
