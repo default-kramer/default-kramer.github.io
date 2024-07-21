@@ -43,7 +43,7 @@ a, a:visited {
 }
 
 .container {
-	max-width: 720px;
+	max-width: 920px;
 	padding: 0 10px;
 	margin: 0 auto;
 }
@@ -63,6 +63,13 @@ a, a:visited {
 .top-nav a {
 	color: white;
 	text-decoration: none;
+}
+
+.hh-scribble-image {
+	max-width: 100%;
+	height: auto;
+	margin-top: 1rem;
+	border: 1px solid black;
 }
 
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Tutorial: Basic Hill</title> 
-    <meta name="description" content="Tutorial: Basic Hill🔗 :  Here we go...  (put-hill!stagehill(block'Chert))...">
+    <meta name="description" content="Tutorial: Basic Hill🔗 : This example uses paint.net. You will need to download and install it to follow along. (You may also be able to use a different image editor of your choice.) Important! When using paint.net, you almost always want &quot;Aliased renderin...">
     <meta name="author"      content="Ryan Kramer">
     <meta name="keywords"    content="">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
@@ -33,14 +33,262 @@
 
 <h1 class="heading"><a name="(part._.Tutorial__.Basic_.Hill)"></a>Tutorial: Basic Hill<span class="button-group"><a class="heading-anchor" href="#(part._.Tutorial__.Basic_.Hill)" title="Link to here">🔗</a><span style="visibility: hidden"> </span></span></h1>
 
+<p>This example uses <a href="https://www.getpaint.net/download.html">paint.net</a>.
+You will need to download and install it to follow along.
+(You may also be able to use a different image editor of your choice.)</p>
+
+<p><span style="font-weight: bold">Important!</span> When using paint.net, you almost always want "Aliased rendering" enabled.
+This setting does not apply to some tools (like the Pencil) but it does apply to others (like the Paint Bucket).
+If you see weird results, especially at borders, check to make sure you used Aliased rendering:
+<img src="/hermits-heresy\tutorials\basic-hill-1/alias-setting.png" alt="" class="hh-scribble-image" height="81" width="149" /></p>
+
+<h1 class="heading">1
+ <tt>&nbsp;</tt><a name="(part._.Step_1_-_.Setup)"></a>Step 1 - Setup<span class="button-group"><a class="heading-anchor" href="#(part._.Step_1_-_.Setup)" title="Link to here">🔗</a><span style="visibility: hidden"> </span></span></h1>
+
 <p></p>
 
-<div class="SIntrapara">Here we go...
+<div class="SIntrapara">Create a new directory for this project.
+Add a file <span style="font-style: italic">script.rkt</span> in that directory.
+Paste this content into <span style="font-style: italic">script.rkt</span> and run it.
+</div>
+
+<div class="SIntrapara">
+ <div class="SCodeFlow">
+  <table cellpadding="0" cellspacing="0" class="RktBlk">
+   <tbody>
+    <tr>
+     <td><a class="RktModLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/guide/Module_Syntax.html#%28part._hash-lang%29"><span class="RktMod">#lang</span></a><span class="hspace">&nbsp;</span><a class="RktModLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/index.html"><span class="RktSym">racket</span></a></td></tr>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktStxLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/require.html#%28form._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._require%29%29">require</a></span><span class="hspace">&nbsp;</span><span class="RktSym">hermits-heresy</span><span class="RktPn">)</span></td></tr>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._save-template-image%2529%2529">save-template-image</a></span><span class="hspace">&nbsp;</span><span class="RktVal">'</span><span class="RktVal">IoA-background</span><span class="RktPn">)</span></td></tr>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._save-template-image%2529%2529">save-template-image</a></span><span class="hspace">&nbsp;</span><span class="RktVal">'</span><span class="RktVal">IoA-mask</span><span class="RktPn">)</span></td></tr></tbody></table></div></div>
+
+<p></p>
+
+<div class="SIntrapara">You should see some output like the following:
+</div>
+
+<div class="SIntrapara">
+ <div class="SCodeFlow">
+  <table cellpadding="0" cellspacing="0" class="RktBlk">
+   <tbody>
+    <tr>
+     <td><span class="RktVal">"wrote to C:\\Users\\kramer\\Desktop\\basic-hill\\IoA-background.bmp"</span></td></tr>
+    <tr>
+     <td><span class="RktVal">"wrote to C:\\Users\\kramer\\Desktop\\basic-hill\\IoA-mask.bmp"</span></td></tr></tbody></table></div></div>
+
+<p>Import both of these images into a new paint.net project.
+Save that project as <span style="font-style: italic">plan.pdn</span>.
+It should look something like this:
+<img src="/hermits-heresy\tutorials\basic-hill-1/initial-plan.png" alt="" class="hh-scribble-image" height="884" width="1840" /></p>
+
+<p>The IoA-background image may help guide you while drawing your hill.
+The IoA-mask image blacks out areas which cannot be built on.</p>
+
+<h1 class="heading">2
+ <tt>&nbsp;</tt><a name="(part._.Step_2_-_.Draw_your_.Hill)"></a>Step 2 - Draw your Hill<span class="button-group"><a class="heading-anchor" href="#(part._.Step_2_-_.Draw_your_.Hill)" title="Link to here">🔗</a><span style="visibility: hidden"> </span></span></h1>
+
+<p>Create a new layer in paint.net and draw a filled-in shape where you want your hill to be.
+I used the Pencil and the Paint Bucket tools to draw a huge red hill covering much of the west side of the map:
+<img src="/hermits-heresy\tutorials\basic-hill-1/added-red-hill.png" alt="" class="hh-scribble-image" height="933" width="1336" /></p>
+
+<p>And because I&rsquo;m feeling fancy, I&rsquo;m going to add another layer and draw a smaller yellow hill
+on top of the red hill.
+You don&rsquo;t have to do this, but I think it improves the demonstration:
+<img src="/hermits-heresy\tutorials\basic-hill-1/added-yellow-hill.png" alt="" class="hh-scribble-image" height="933" width="1336" /></p>
+
+<p>Now you need to export your hill in a format that Hermit&rsquo;s Heresy can understand.
+First, toggle the IoA-mask and IoA-background Layers visibility to off, because
+we don&rsquo;t want these in the output.
+Now use File -&gt; Save As to save just the hill data as a bitmap named <span style="font-style: italic">hill.bmp</span>.
+Paint.net will allow you to adjust some settings like Bit Depth but I always just take the defaults.
+You do have to Flatten the image to save as a bitmap, which is what we want anyway.
+Now your paint.net should look something like this:
+<img src="/hermits-heresy\tutorials\basic-hill-1/flattened-bmp.png" alt="" class="hh-scribble-image" height="933" width="1336" /></p>
+
+<p>Finally, we need to color the hill to communicate the elevation.
+You can read the documentation of <span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._put-hill%2521%2529%2529">put-hill!</a></span> for more details, but basically
+darker pixels correspond to taller elevation.
+I paint the larger area with rgb(80,80,80) meaning it will be 40 blocks short of max height.
+I paint the smaller area with rgb(20,20,20) meaning it will be 10 blocks short of max height.
+I adjusted the Tolerance of the Paint Bucket down to 0% to avoid leaking from one section to the other.
+The result looks like this:
+<img src="/hermits-heresy\tutorials\basic-hill-1/colored-bmp.png" alt="" class="hh-scribble-image" height="933" width="1336" /></p>
+
+<p>Also pay attention that the background is fully transparent.
+If you got a white background by accident, you can use the Magic Wand to select and delete the white pixels.</p>
+
+<h1 class="heading">3
+ <tt>&nbsp;</tt><a name="(part._.Step_3_-_.Place_the_.Hill)"></a>Step 3 - Place the Hill<span class="button-group"><a class="heading-anchor" href="#(part._.Step_3_-_.Place_the_.Hill)" title="Link to here">🔗</a><span style="visibility: hidden"> </span></span></h1>
+
+<p></p>
+
+<div class="SIntrapara">Switch back to Racket, opening <span style="font-style: italic">script.rkt</span> if you don&rsquo;t already have it open.
+We no longer need the <span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._save-template-image%2529%2529">save-template-image</a></span> stuff, so remove those lines.
+The file should now contain only these two lines:
+</div>
+
+<div class="SIntrapara">
+ <div class="SCodeFlow">
+  <table cellpadding="0" cellspacing="0" class="RktBlk">
+   <tbody>
+    <tr>
+     <td><a class="RktModLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/guide/Module_Syntax.html#%28part._hash-lang%29"><span class="RktMod">#lang</span></a><span class="hspace">&nbsp;</span><a class="RktModLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/index.html"><span class="RktSym">racket</span></a></td></tr>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktStxLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/require.html#%28form._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._require%29%29">require</a></span><span class="hspace">&nbsp;</span><span class="RktSym">hermits-heresy</span><span class="RktPn">)</span></td></tr></tbody></table></div></div>
+
+<p></p>
+
+<div class="SIntrapara">Now we are going to add a few more lines, and I will explain what each does.
+First, you need to tell Hermit&rsquo;s Heresy where your SD directory is.
+Adjust the following line as needed.
+</div>
+
+<div class="SIntrapara">
+ <div class="SCodeFlow">
+  <p><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._save-dir%2529%2529">save-dir</a></span><span class="hspace">&nbsp;</span><span class="RktVal">"C:/Users/kramer/Documents/My Games/DRAGON QUEST BUILDERS II/Steam/76561198073553084/SD/"</span><span class="RktPn">)</span></p></div></div>
+
+<p></p>
+
+<div class="SIntrapara">Now choose your source and destination save slots.
+Your destination slot must be configured as writable as per
+<a href="https://docs.racket-lang.org/hermits-heresy/index.html">the installation instructions</a>.
+</div>
+
+<div class="SIntrapara">
+ <div class="SCodeFlow">
+  <table cellpadding="0" cellspacing="0" class="RktBlk">
+   <tbody>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktStxLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/define.html#%28form._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._define%29%29">define</a></span><span class="hspace">&nbsp;</span><span class="RktSym">source-slot</span><span class="hspace">&nbsp;</span><span class="RktVal">'</span><span class="RktVal">B02</span><span class="RktPn">)</span></td></tr>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktStxLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/define.html#%28form._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._define%29%29">define</a></span><span class="hspace">&nbsp;</span><span class="RktSym">dest-slot</span><span class="hspace">&nbsp;</span><span class="RktVal">'</span><span class="RktVal">B00</span><span class="RktPn">)</span></td></tr></tbody></table></div></div>
+
+<p></p>
+
+<div class="SIntrapara">The following line copies everything from the source to the destination.
+</div>
+
+<div class="SIntrapara">
+ <div class="SCodeFlow">
+  <p><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._copy-all-save-files%2521%2529%2529">copy-all-save-files!</a></span><span class="hspace">&nbsp;</span><span class="RktPn">#:from</span><span class="hspace">&nbsp;</span><span class="RktSym">source-slot</span><span class="hspace">&nbsp;</span><span class="RktPn">#:to</span><span class="hspace">&nbsp;</span><span class="RktSym">dest-slot</span><span class="RktPn">)</span></p></div></div>
+
+<p></p>
+
+<div class="SIntrapara">The following line loads the stage to be edited.
+</div>
+
+<div class="SIntrapara">
+ <div class="SCodeFlow">
+  <p><span class="RktPn">(</span><span class="RktSym"><a class="RktStxLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/define.html#%28form._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._define%29%29">define</a></span><span class="hspace">&nbsp;</span><span class="RktSym">stage</span><span class="hspace">&nbsp;</span><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._load-stage%2529%2529">load-stage</a></span><span class="hspace">&nbsp;</span><span class="RktVal">'</span><span class="RktVal">IoA</span><span class="hspace">&nbsp;</span><span class="RktSym">dest-slot</span><span class="RktPn">)</span><span class="RktPn">)</span></p></div></div>
+
+<p></p>
+
+<div class="SIntrapara">The following line reads the <span style="font-style: italic">hill.bmp</span> you created.
+</div>
+
+<div class="SIntrapara">
+ <div class="SCodeFlow">
+  <p><span class="RktPn">(</span><span class="RktSym"><a class="RktStxLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/define.html#%28form._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._define%29%29">define</a></span><span class="hspace">&nbsp;</span><span class="RktSym">hill</span><span class="hspace">&nbsp;</span><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._bitmap-%7E3ehill%2529%2529">bitmap-&gt;hill</a></span><span class="hspace">&nbsp;</span><span class="RktVal">"hill.bmp"</span><span class="RktPn">)</span><span class="RktPn">)</span></p></div></div>
+
+<p></p>
+
+<div class="SIntrapara">The following line fills the blockspace defined by the hill with Chert.
+If you want to use a different block, look up its Id in
+<a href="https://github.com/Mugafo/DQB2ChunkEditor/blob/main/src/Data/Tiles.json">this file</a>
+and replace <span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._block%2529%2529">block</a></span><span class="stt"> </span><span class="RktVal">'</span><span class="RktVal">Chert</span><span class="RktPn">)</span> with that number.
+(This will be improved soon.)
 </div>
 
 <div class="SIntrapara">
  <div class="SCodeFlow">
   <p><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._put-hill%2521%2529%2529">put-hill!</a></span><span class="hspace">&nbsp;</span><span class="RktSym">stage</span><span class="hspace">&nbsp;</span><span class="RktSym">hill</span><span class="hspace">&nbsp;</span><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._block%2529%2529">block</a></span><span class="hspace">&nbsp;</span><span class="RktVal">'</span><span class="RktVal">Chert</span><span class="RktPn">)</span><span class="RktPn">)</span></p></div></div>
+
+<p></p>
+
+<div class="SIntrapara">And finally, the following line saves the stage back to the filesystem.
+</div>
+
+<div class="SIntrapara">
+ <div class="SCodeFlow">
+  <p><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._save-stage%2521%2529%2529">save-stage!</a></span><span class="hspace">&nbsp;</span><span class="RktSym">stage</span><span class="RktPn">)</span></p></div></div>
+
+<p></p>
+
+<div class="SIntrapara">And that&rsquo;s it!
+The complete script should look approximately like this:
+</div>
+
+<div class="SIntrapara">
+ <div class="SCodeFlow">
+  <table cellpadding="0" cellspacing="0" class="RktBlk">
+   <tbody>
+    <tr>
+     <td><a class="RktModLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/guide/Module_Syntax.html#%28part._hash-lang%29"><span class="RktMod">#lang</span></a><span class="hspace">&nbsp;</span><a class="RktModLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/index.html"><span class="RktSym">racket</span></a></td></tr>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktStxLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/require.html#%28form._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._require%29%29">require</a></span><span class="hspace">&nbsp;</span><span class="RktSym">hermits-heresy</span><span class="RktPn">)</span></td></tr>
+    <tr>
+     <td><span class="hspace">&nbsp;</span></td></tr>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._save-dir%2529%2529">save-dir</a></span><span class="hspace">&nbsp;</span><span class="RktVal">"C:/Users/kramer/Documents/My Games/DRAGON QUEST BUILDERS II/Steam/76561198073553084/SD/"</span><span class="RktPn">)</span></td></tr>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktStxLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/define.html#%28form._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._define%29%29">define</a></span><span class="hspace">&nbsp;</span><span class="RktSym">source-slot</span><span class="hspace">&nbsp;</span><span class="RktVal">'</span><span class="RktVal">B02</span><span class="RktPn">)</span></td></tr>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktStxLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/define.html#%28form._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._define%29%29">define</a></span><span class="hspace">&nbsp;</span><span class="RktSym">dest-slot</span><span class="hspace">&nbsp;</span><span class="RktVal">'</span><span class="RktVal">B00</span><span class="RktPn">)</span></td></tr>
+    <tr>
+     <td><span class="hspace">&nbsp;</span></td></tr>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._copy-all-save-files%2521%2529%2529">copy-all-save-files!</a></span><span class="hspace">&nbsp;</span><span class="RktPn">#:from</span><span class="hspace">&nbsp;</span><span class="RktSym">source-slot</span><span class="hspace">&nbsp;</span><span class="RktPn">#:to</span><span class="hspace">&nbsp;</span><span class="RktSym">dest-slot</span><span class="RktPn">)</span></td></tr>
+    <tr>
+     <td><span class="hspace">&nbsp;</span></td></tr>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktStxLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/define.html#%28form._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._define%29%29">define</a></span><span class="hspace">&nbsp;</span><span class="RktSym">stage</span><span class="hspace">&nbsp;</span><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._load-stage%2529%2529">load-stage</a></span><span class="hspace">&nbsp;</span><span class="RktVal">'</span><span class="RktVal">IoA</span><span class="hspace">&nbsp;</span><span class="RktSym">dest-slot</span><span class="RktPn">)</span><span class="RktPn">)</span></td></tr>
+    <tr>
+     <td><span class="hspace">&nbsp;</span></td></tr>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktStxLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/reference/define.html#%28form._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._define%29%29">define</a></span><span class="hspace">&nbsp;</span><span class="RktSym">hill</span><span class="hspace">&nbsp;</span><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._bitmap-%7E3ehill%2529%2529">bitmap-&gt;hill</a></span><span class="hspace">&nbsp;</span><span class="RktVal">"hill.bmp"</span><span class="RktPn">)</span><span class="RktPn">)</span></td></tr>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._put-hill%2521%2529%2529">put-hill!</a></span><span class="hspace">&nbsp;</span><span class="RktSym">stage</span><span class="hspace">&nbsp;</span><span class="RktSym">hill</span><span class="hspace">&nbsp;</span><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._block%2529%2529">block</a></span><span class="hspace">&nbsp;</span><span class="RktVal">'</span><span class="RktVal">Chert</span><span class="RktPn">)</span><span class="RktPn">)</span></td></tr>
+    <tr>
+     <td><span class="hspace">&nbsp;</span></td></tr>
+    <tr>
+     <td><span class="RktPn">(</span><span class="RktSym"><a class="RktValLink Sq" data-pltdoc="x" href="https://docs.racket-lang.org/local-redirect/?doc=hermits-heresy&amp;rel=index.html%23%2528def._%2528%2528lib._hermits-heresy%252Fmain..rkt%2529._save-stage%2521%2529%2529">save-stage!</a></span><span class="hspace">&nbsp;</span><span class="RktSym">stage</span><span class="RktPn">)</span></td></tr></tbody></table></div></div>
+
+<p></p>
+
+<div class="SIntrapara">Run the script in DrRacket, and you should see output like this:
+</div>
+
+<div class="SIntrapara">
+ <div class="SCodeFlow">
+  <table cellpadding="0" cellspacing="0" class="RktBlk">
+   <tbody>
+    <tr>
+     <td><span class="RktVal">"Copied 14 files from [...] to [...]"</span></td></tr>
+    <tr>
+     <td><span class="RktVal">"put-hill! placed 6712199 blocks, left 1705 items intact"</span></td></tr>
+    <tr>
+     <td><span class="RktVal">"Saved STGDAT file: C:/Users/.../SD/B00/STGDAT01.BIN"</span></td></tr></tbody></table></div></div>
+
+<p>Over 6 million blocks placed!
+Sure beats doing it by hand if you ask me.</p>
+
+<h1 class="heading">4
+ <tt>&nbsp;</tt><a name="(part._.Step_4_-_.Validate_.Results)"></a>Step 4 - Validate Results<span class="button-group"><a class="heading-anchor" href="#(part._.Step_4_-_.Validate_.Results)" title="Link to here">🔗</a><span style="visibility: hidden"> </span></span></h1>
+
+<p>Start up DQB2 and load your save.
+Take a look around and verify that it did what you want.
+If not, loop back to step 2, adjust your drawings and/or your script, and repeat.
+Here is a look at my hill, at the east side looking west:
+<img src="/hermits-heresy\tutorials\basic-hill-1/result-angle-1.png" alt="" class="hh-scribble-image" height="1080" width="1920" /></p>
+
+<p>And here is another angle, showing the back where I configured the two different elevations:
+<img src="/hermits-heresy\tutorials\basic-hill-1/result-angle-2.png" alt="" class="hh-scribble-image" height="1080" width="1920" /></p>
+
+<p>This example is also available
+<a href="https://github.com/default-kramer/HermitsHeresy/tree/main/examples/basic-hill">on Github</a>.</p>
       </div>
       <footer>
         <hr />
