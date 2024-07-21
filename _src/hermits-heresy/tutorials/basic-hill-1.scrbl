@@ -84,7 +84,7 @@ Adjust the following line as needed.
 
 Now choose your source and destination save slots.
 Your destination slot must be configured as writable as per
-@hyperlink["https://docs.racket-lang.org/hermits-heresy/index.html"]{the installation instructions}.
+@hyperlink["https://docs.racket-lang.org/hermits-heresy/index.html#%28part._make-slot-writable%29"]{the installation instructions}.
 @(racketblock
   (define source-slot 'B02)
   (define dest-slot 'B00))
