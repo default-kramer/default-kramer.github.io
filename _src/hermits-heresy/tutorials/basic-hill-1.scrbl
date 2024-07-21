@@ -153,3 +153,5 @@ And here is another angle, showing the back where I configured the two different
 
 This example is also available
 @hyperlink["https://github.com/default-kramer/HermitsHeresy/tree/main/examples/basic-hill"]{on Github}.
+
+Continued at @hyperlink["basic-hill-2.html"]{Part 2}.

@@ -39,13 +39,13 @@ Now just hit the delete key to change the white background back to transparent.
 Save these changes to @italic{smooth-hill.bmp}.
 @(img "basic-hill-2/deleted-white-background.png")
 
-Now just have to make a very small change in @italic{script.rkt}.
+Now we just have to make a very small change in @italic{script.rkt}.
 Find the line containing "hill.bmp" and change it to use smooth-hill.bmp instead:
 @(racketblock
   (define hill (bitmap->hill "smooth-hill.bmp")))
 
 And that's it!
-Go ahead and run it, and when it finishes load your save file and take a look.
+Go ahead and run it, wait for it to finish, and then load your save file and take a look.
 Here is angle 1:
 @(img "basic-hill-2/result-angle-1.png")
 
