@@ -89,9 +89,13 @@ a, a:visited {
 }
 
 .SCodeFlow .RktVal {
-	color: #228b22
+	color: #228b22;
 }
 
 .SIntrapara {
 	margin: 1rem 0;
+}
+
+.RktPn {
+	color: #843c24;
 }
