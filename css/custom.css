@@ -73,6 +73,17 @@ a, a:visited {
 	display: block; /* otherwise smaller images can ruin the text flow */
 }
 
+/* Not sure if this .figure stuff is a Markdown convention or a Frog convention */
+.figure img {
+	max-width: 100%;
+	height: auto;
+}
+.figure .caption {
+	text-align: center;
+	font-size: 0.75rem;
+	margin-top: 0;
+}
+
 
 /* scribble stuff */
 .SCodeFlow {

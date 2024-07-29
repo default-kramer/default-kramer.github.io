@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>STB - Defining the Perimeter</title> 
+    <meta name="description" content="STB - Defining the Perimeter: **WARNING** - This page demonstrates the use of some **undocumented and unstable functionality**. If you are interested using any of these functions yourself, let me know and I will prioritize making them stable and documente...">
+    <meta name="author"      content="Ryan Kramer">
+    <meta name="keywords"    content="">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <link rel="icon"      href="/favicon.ico">
+    <link rel="canonical" href="https://www.dqb-forever.com/stb\perimeter.html|">
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <!--<link rel="stylesheet" type="text/css" href="/css/scribble.css"> selectively moved to custom.css -->
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+  </head>
+  <body>
+    <div class="top-nav">
+      <div class="container">
+      <span><a href="/index.html">DQB Forever</a></span>
+      <span>/</span>
+      <span><a href="/hermits-heresy/index.html">Hermit's Heresy</a></span>
+      </div>
+    </div>
+    <div class="container">
+      <div id="content">
+
+
+
+
+<h1 id="stb---defining-the-perimeter">STB - Defining the Perimeter</h1>
+
+<p><strong>WARNING</strong> - This page demonstrates the use of some <strong>undocumented and unstable functionality</strong>. If you are interested using any of these functions yourself, let me know and I will prioritize making them stable and documented.</p>
+
+<p>My <a href="/stb/">Study the Blade</a> project is an &ldquo;ongoing project&rdquo;, meaning that my workflow goes like this:</p>
+
+<ol>
+ <li>Do some manual building (possibly for months at a time)</li>
+ <li>Run a Hermit&rsquo;s Heresy script to generate terrain</li>
+ <li>Check out the result. As desired, adjust the images and/or scripts and loop back to step 2.</li>
+ <li>Is the island complete? Probably not, so discard the generated terrain and loop back to step 1. Keep the scripts of course, for future generations.</li></ol>
+
+<p>I use Save Slot 3 for my manual building, and Save Slot 1 for the temporary generated output. (Save Slot 1 is my ephemeral slot.)</p>
+
+<p>In order to support this workflow, I need a way to tell Hermit&rsquo;s Heresy not to overwrite anything in the manual build area. I do this by hiding a layer of Seaweed-Styled Block underneath the manual build area. (Any block that does not occur naturally would be a good choice.) You can see the Seaweed platform below. The Herringbone Floorboard is just outside the manual build area and will be overwritten when the script runs:</p>
+
+<div class="figure"><img src="/img/STB/perimeter1.jpg" alt="The STB Perimeter" />
+ <p class="caption">The STB Perimeter</p></div>
+
+<p>I use the undocumented function <code>stage-&gt;pict</code> to generate an image of my manual build area. This allows me to use paint.net to confirm that everything looks as expected.</p>
+
+<div class="figure"><img src="/img/STB/manual-build-sanity-check.png" alt="Manual Build Sanity Check" />
+ <p class="caption">Manual Build Sanity Check</p></div>
+
+<p>And then I use the undocumented <code>with-protected-areas</code> to tell Hermit&rsquo;s Heresy to leave that manual build area untouched when I run the script.</p>
+
+<div class="figure"><img src="/img/STB/perimeter2.jpg" alt="Perimeter After Generation" />
+ <p class="caption">Perimeter After Generation</p></div>
+
+<p>The full project is <a href="https://github.com/default-kramer/HermitsHeresy/blob/main/examples/STB/stb.rkt">available on Github</a> but I will repeat: most of this functionality is undocumented and unstable, so I don&rsquo;t recommend starting an &ldquo;ongoing project&rdquo; like this right now unless you don&rsquo;t mind the potential for breaking changes.</p>
+      </div>
+      <footer>
+        <hr />
+                <p>Contact: dqbforever@gmail.com</p>
+        <p>Site generated
+        by <a href="https://github.com/greghendershott/frog">Frog</a>,
+        the <strong>fr</strong>ozen bl<strong>og</strong> tool.</p>
+      </footer>
+    </div>
+  </body>
+</html>
