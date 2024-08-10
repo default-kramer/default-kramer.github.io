@@ -102,10 +102,7 @@ The following line reads the @italic{hill.bmp} you created.
   (define hill (bitmap->hill "hill.bmp")))
 
 The following line fills the blockspace defined by the hill with Chert.
-If you want to use a different block, look up its Id in
-@hyperlink["https://github.com/Sapphire645/DQB2ChunkEditorPlus/blob/main/src/Data/Tiles.json"]{this file}
-and replace @(racket (block 'Chert)) with that number.
-(This will be improved soon.)
+If you want to use a different block, read the documentation of @(racket find-block-name).
 @(racketblock
   (put-hill! stage hill (block 'Chert)))
 

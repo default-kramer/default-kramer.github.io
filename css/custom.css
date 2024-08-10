@@ -110,3 +110,8 @@ a, a:visited {
 .RktPn {
 	color: #843c24;
 }
+
+/* For the output of @(racket foo) because it won't live inside an SCodeFlow */
+.RktSym {
+	font-family: monospace;
+}
