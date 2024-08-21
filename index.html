@@ -43,14 +43,42 @@
 
 <p>I imagine I will be playing DQB2 for the rest of my life. What game could possibly dethrone it?</p>
 
-<p>But as of July 2024, the DQB2 in-game noticeboard is not working correctly. Voting is no longer possible; every new snapshot and island has zero votes. Visiting other builders&rsquo; islands still works, for now, but the situation is concerning. If visiting ever stops working, we builders will need an unofficial replacement. And if that day comes, I hope to be ready and able to build and host it. DQB Forever!</p>
-
-<h2 id="what-would-it-look-like">What would it look like?</h2>
+<p>I have many improvements planned for Hermit&rsquo;s Heresy, but perhaps my loftiest goal is to be able to generate beautiful terrain. It could be fully random or heavily guided by the user. Imagine being able to generate an island using a sequence of steps like:</p>
 
 <ul>
- <li>Upload snapshots (any image file). Arrange into albums/slideshows with generous-length captions.</li>
- <li>Upload save files for other people to download and &ldquo;visit&rdquo; (by temporarily adopting the save file).</li>
- <li>Public likes, private ratings, no comments.</li></ul>
+ <li>RollingHills
+  <ul>
+   <li>max slope: 2</li>
+   <li>min plateau size: 14</li>
+   <li>average plateau Y: 42</li>
+   <li>mottle:
+    <ul>
+     <li>Grassy-Earth: 5</li>
+     <li>Limegrassy-Earth: 2</li>
+     <li>Earth: 1</li>
+     <li>Clodstone: 1</li></ul></li></ul></li>
+ <li>Mountain
+  <ul>
+   <li>height: 93</li>
+   <li>max width: 40</li>
+   <li>min width: 25</li>
+   <li>mottle:
+    <ul>
+     <li>Chert: 2</li>
+     <li>Chunky-Chert: 2</li>
+     <li>Light-Dolomite: 3</li>
+     <li>Dark-Dolomite: 5</li></ul></li></ul></li>
+ <li>PineForest
+  <ul>
+   <li>density: 0.13</li>
+   <li>groves:
+    <ul>
+     <li>probability: 0.05</li>
+     <li>min width: 8</li>
+     <li>max width: 25</li>
+     <li>density: 0.38</li></ul></li></ul></li></ul>
+
+<p>Then you load the game, explore the world you&rsquo;ve just generated, and let the inspiration flow!</p>
       </div>
       <footer>
         <hr />

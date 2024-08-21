@@ -11,14 +11,35 @@ If you haven't yet seen my [Study the Blade](/stb/) project, please check it out
 I imagine I will be playing DQB2 for the rest of my life.
 What game could possibly dethrone it?
 
-But as of July 2024, the DQB2 in-game noticeboard is not working correctly.
-Voting is no longer possible; every new snapshot and island has zero votes.
-Visiting other builders' islands still works, for now, but the situation is concerning.
-If visiting ever stops working, we builders will need an unofficial replacement.
-And if that day comes, I hope to be ready and able to build and host it.
-DQB Forever!
+I have many improvements planned for Hermit's Heresy, but perhaps my loftiest goal
+is to be able to generate beautiful terrain.
+It could be fully random or heavily guided by the user.
+Imagine being able to generate an island using a sequence of steps like:
 
-## What would it look like?
-- Upload snapshots (any image file). Arrange into albums/slideshows with generous-length captions.
-- Upload save files for other people to download and "visit" (by temporarily adopting the save file).
-- Public likes, private ratings, no comments.
+- RollingHills
+	- max slope: 2
+	- min plateau size: 14
+	- average plateau Y: 42
+	- mottle:
+		- Grassy-Earth: 5
+		- Limegrassy-Earth: 2
+		- Earth: 1
+		- Clodstone: 1
+- Mountain
+	- height: 93
+	- max width: 40
+	- min width: 25
+	- mottle:
+		- Chert: 2
+		- Chunky-Chert: 2
+		- Light-Dolomite: 3
+		- Dark-Dolomite: 5
+- PineForest
+	- density: 0.13
+	- groves:
+		- probability: 0.05
+		- min width: 8
+		- max width: 25
+		- density: 0.38
+
+Then you load the game, explore the world you've just generated, and let the inspiration flow!
