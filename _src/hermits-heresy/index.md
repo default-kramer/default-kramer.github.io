@@ -11,7 +11,12 @@ you must first complete the [installation instructions here](https://docs.racket
 Be sure you understand the "Avoiding Catastrophic Data Loss" section. You should be confident with your personal backup strategy before using Hermit’s Heresy.
 
 ## Tutorials
+More coming soon...
+
 ### Basics
 1. [Basic Hill, part 1](tutorials/basic-hill-1.html)
 1. [Basic Hill, part 2](tutorials/basic-hill-2.html)
-1. More coming soon!
+
+### Intermediate
+1. [Mottled Mountainside](tutorials/mottled-mountainside.html)
+1. TODO: Mottled Footpath

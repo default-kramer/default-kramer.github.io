@@ -115,3 +115,7 @@ a, a:visited {
 .RktSym {
 	font-family: monospace;
 }
+
+.RktCmt {
+	color: #c2741f;
+}
