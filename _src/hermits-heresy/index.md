@@ -11,7 +11,6 @@ you must first complete the [installation instructions here](https://docs.racket
 Be sure you understand the "Avoiding Catastrophic Data Loss" section. You should be confident with your personal backup strategy before using Hermit’s Heresy.
 
 ## Tutorials
-More coming soon...
 
 ### Basics
 1. [Basic Hill, part 1](tutorials/basic-hill-1.html)
@@ -20,3 +19,9 @@ More coming soon...
 ### Intermediate
 1. [Mottled Mountainside](tutorials/mottled-mountainside.html)
 1. [Mottled Footpath](tutorials/mottled-footpath.html)
+
+### Coming Soon:
+1. Use `bitmap->area` and `in-area?` to limit the scope of some block manipulations
+1. Copy a large area from a Soggy Skerry to the IoA
+1. Use a second hill and `in-hill?` to create a snow line at the top of a mountain
+1. Use `repair-sea!`
