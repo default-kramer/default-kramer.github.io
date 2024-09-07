@@ -22,8 +22,8 @@ There's gold in them thar hills.
 
 The script starts with the usual setup.
 Change these values as needed:
-@(examples-no-eval
-  #:lang racket
+@(racketblock
+  #,(tt "#lang racket")
   (require hermits-heresy)
   (save-dir "C:/Users/kramer/Documents/My Games/DRAGON QUEST BUILDERS II/Steam/76561198073553084/SD/")
   (define source-slot 'B02) (code:comment "slot 3")

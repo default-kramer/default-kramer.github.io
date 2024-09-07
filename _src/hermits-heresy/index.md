@@ -19,4 +19,4 @@ More coming soon...
 
 ### Intermediate
 1. [Mottled Mountainside](tutorials/mottled-mountainside.html)
-1. TODO: Mottled Footpath
+1. [Mottled Footpath](tutorials/mottled-footpath.html)
