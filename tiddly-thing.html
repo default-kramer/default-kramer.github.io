@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Tiddly Thingy</title>
+</head>
+
+<body>
+  <button id="load-html">Choose Tiddly File</button>
+  <div id="load-error-msg"></div>
+
+  <script>
+    // For some reason, it seems holding onto a thunk works, whereas holding onto the fileHandle causes
+    // a "createWritable is not a function" error in chrome.
+    // (Yeah this is hard to believe...)
+    let createWritableThunk = null;
+
+    // New-enough versions of Tiddly Wiki automatically detect the presence of window.$tw.customSaver
+    window.$tw = window.$tw || {};
+    window.$tw.customSaver = {
+      save: async function (text, method, callback) {
+        console.log({ where: "window.$tw.customSaver", method });
+        let cwt = createWritableThunk;
+        if (!cwt) {
+          return false;
+        }
+
+        (async () => {
+          try {
+            const writable = await cwt();
+            await writable.write(text);
+            await writable.close();
+            callback(null); // success
+          } catch (err) {
+            callback(err);
+          }
+        })();
+        return true;
+      }
+    };
+
+    document.getElementById('load-html').addEventListener('click', async () => {
+      try {
+        const [fileHandle] = await window.showOpenFilePicker({
+          types: [
+            {
+              description: 'HTML Files',
+              accept: {
+                'text/html': ['.html', '.htm']
+              }
+            }
+          ],
+          excludeAcceptAllOption: false,
+          multiple: false,
+          mode: 'readwrite'
+        });
+
+        createWritableThunk = async () => await fileHandle.createWritable();
+        const proofOfWritability = await createWritableThunk();
+
+        // Get the file
+        const file = await fileHandle.getFile();
+        const content = await file.text();
+
+        // Replace the entire document content
+        document.open();
+        document.write(content);
+        document.close();
+
+      } catch (err) {
+        console.error(err);
+        document.getElementById('load-error-msg').innerText = 'Error: ' + (err?.message || err.toString());
+      }
+    });
+  </script>
+</body>
+
+</html>
